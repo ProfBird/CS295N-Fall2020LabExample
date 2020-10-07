@@ -6,9 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookReviews.Controllers
 {
-    public class HomeController1 : Controller
+    public class AuthorController : Controller
     {
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Recommended()
         {
             return View();
         }
