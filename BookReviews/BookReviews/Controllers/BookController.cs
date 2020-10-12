@@ -12,5 +12,11 @@ namespace BookReviews.Controllers
         {
             return View();
         }
+
+        // Invoke the view with form for entering a review
+        public IActionResult Review()
+        {
+            return View();
+        }
     }
 }
