@@ -1,28 +1,39 @@
 ﻿@model Review
 @{
-    ViewData["Title"] = "Books";
+    ViewData["Title"] = "Review";
 }
+<h1>Book Review</h1>
+<strong>Enter your Review</strong>
+<br />
+<form method="post">
+    <label asp-for="BookTitle">Title</label><br />
+    <input asp-for="BookTitle" /><br />
 
-    <form method="post">
-        <label asp-for="BookTitle">Title</label>
-        <input asp-for="BookTitle" /><br />
+    <label asp-for="AuthorName">Author</label><br />
+    <input asp-for="AuthorName" /><br />
 
-        <label asp-for="AuthorName">Author</label>
-        <input asp-for="AuthorName" /><br />
+    <label asp-for="Reviewer.Name">Reviewer</label><br />
+    <input asp-for="Reviewer.Name" /><br />
 
-        <label asp-for="Reviewer.Name">Reviewer</label>
-        <input asp-for="Reviewer.Name" /><br />
-
-        <label asp-for="ReviewText">Review</label>
-        <textarea asp-for="ReviewText" placeholder="Write your review here">
+    <label asp-for="ReviewText">Review</label><br />
+    <textarea asp-for="ReviewText" placeholder="Write your review here">
 </textarea><br />
 
-        <button type="submit">Submit</button>
-    </form>
+    <button type="submit">Submit</button>
+</form>
+<br />
+<hr />
+
 <h2>Your Review</h2>
 <p>
-    Title: 
-    @Model.BookTitle
-    Reviewer: 
-    @Model.Reviewer.Name
+    <strong>Title:</strong><br />
+    @Model.BookTitle<br />
+    <strong>Author:</strong><br />
+    @Model.AuthorName<br />
+    <strong>Reviewer:</strong><br />
+    @Model.Reviewer.Name<br />
+    <strong>Review Date:</strong><br />
+    @Model.ReviewDate<br />
+    <strong>Review:</strong><br />
+    @Model.ReviewText<br />
 </p>

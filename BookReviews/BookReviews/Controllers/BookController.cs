@@ -27,7 +27,8 @@ namespace BookReviews.Controllers
         [HttpPost]
         public IActionResult Review(Review model)
         {
+            model.ReviewDate = DateTime.Now;
             return View(model);
         }
     }
-}
+};
