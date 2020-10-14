@@ -3,14 +3,22 @@
     ViewData["Title"] = "Books";
 }
 
-<form method="post">
-    <label asp-for="BookTitle">Title</label>
-    <input asp-for="BookTitle" /><br />
-    <label asp-for="Reviewer.Name">Reviewer</label>
-    <input asp-for="Reviewer.Name" /><br />
-    <button type="submit">Submit</button>
+    <form method="post">
+        <label asp-for="BookTitle">Title</label>
+        <input asp-for="BookTitle" /><br />
 
-</form>
+        <label asp-for="AuthorName">Author</label>
+        <input asp-for="AuthorName" /><br />
+
+        <label asp-for="Reviewer.Name">Reviewer</label>
+        <input asp-for="Reviewer.Name" /><br />
+
+        <label asp-for="ReviewText">Review</label>
+        <textarea asp-for="ReviewText" placeholder="Write your review here">
+</textarea><br />
+
+        <button type="submit">Submit</button>
+    </form>
 <h2>Your Review</h2>
 <p>
     Title: 
