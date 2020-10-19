@@ -18,10 +18,7 @@ namespace BookReviews.Controllers
         // Invoke the view with form for entering a review
         public IActionResult Review()
         {
-            Review model = new Review();
-            User reviewer = new User();
-            model.Reviewer = reviewer;
-            return View(model);
+            return View();
         }
 
         [HttpPost]

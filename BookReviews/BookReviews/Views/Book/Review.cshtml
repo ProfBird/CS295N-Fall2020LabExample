@@ -24,7 +24,9 @@
 <br />
 <hr />
 
-<h2>Your Review</h2>
+@if (Model != null)
+{
+    <h2>Your Review</h2>
 <p>
     <strong>Title:</strong><br />
     @Model.BookTitle<br />
@@ -37,3 +39,4 @@
     <strong>Review:</strong><br />
     @Model.ReviewText<br />
 </p>
+}
