@@ -2,13 +2,13 @@
 @{
     ViewData["Title"] = "Review";
 }
-<h1>Book Review</h1>
+<h1 class="jumbotron">Book Review</h1>
 <strong>Enter your Review</strong>
 <br />
-<form method="post" class="container form-horizontal">
+<form method="post" class="container">
     <div class="row">
-        <label asp-for="BookTitle" class="control-label col-sm-3">Title</label>
-        <input asp-for="BookTitle" class="form-control col-sm-6" />
+        <label asp-for="BookTitle" class="control-label col-sm-4 col-md-2">Title</label>
+        <input asp-for="BookTitle" class="form-control col-sm-8 col-md-10" />
     </div>
     <div class="row">
         <label asp-for="AuthorName" class="control-label">Author</label><br />
@@ -24,7 +24,7 @@
 </textarea>
     </div>
     <div class="row">
-        <button type="submit" class="form-control">Submit</button>
+        <button type="submit" class="form-control btn btn-success col-2">Submit</button>
     </div>
 </form>
 
@@ -35,15 +35,15 @@
 {
     <h2>Your Review</h2>
     <p>
-        <strong>Title:</strong><br />
+        <strong class="m-3">Title:</strong>
         @Model.BookTitle<br />
-        <strong>Author:</strong><br />
+        <strong class="m-3">Author:</strong>
         @Model.AuthorName<br />
-        <strong>Reviewer:</strong><br />
+        <strong class="m-3">Reviewer:</strong>
         @Model.Reviewer.Name<br />
-        <strong>Review Date:</strong><br />
+        <strong class="m-3">Review Date:</strong>
         @Model.ReviewDate<br />
-        <strong>Review:</strong><br />
+        <strong class="m-3">Review:</strong>
         @Model.ReviewText<br />
     </p>
 }
