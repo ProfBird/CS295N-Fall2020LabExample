@@ -9,7 +9,7 @@ namespace Tests
     public class BookTests
     {
         [Fact]
-        public void ReviewHttpPostTest()
+        public void ReviewPostDateTest()
         {
 
             // Arrange
