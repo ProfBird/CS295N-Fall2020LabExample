@@ -1,17 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BookReviews.Models
 {
     public class QuizVM
     {
-        // User's answers and whether right or wrong for three questions
+        // User's answer to the first question
         public String UserAnswer1 {get; set;}
+        // Result of checking the answer
         public String RightOrWrong1 { get; set; }
+
+        // Second question results
         public String UserAnswer2 { get; set; }
         public String RightOrWrong2 { get; set; }
+
+        // Thirds question results
         public String UserAnswer3 { get; set; }
         public String RightOrWrong3 { get; set; }
 
