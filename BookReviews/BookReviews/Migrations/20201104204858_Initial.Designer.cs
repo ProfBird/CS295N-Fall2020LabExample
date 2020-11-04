@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookReviews.Migrations
 {
     [DbContext(typeof(BookReviewContext))]
-    [Migration("20201104182543_Initial")]
+    [Migration("20201104204858_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,7 +47,7 @@ namespace BookReviews.Migrations
 
                     b.HasIndex("ReviewerUserID");
 
-                    b.ToTable("Books");
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("BookReviews.Models.User", b =>
@@ -62,7 +62,7 @@ namespace BookReviews.Migrations
 
                     b.HasKey("UserID");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("BookReviews.Models.Review", b =>

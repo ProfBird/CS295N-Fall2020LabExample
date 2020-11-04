@@ -35,7 +35,7 @@ namespace BookReviews.Controllers
         {
             model.ReviewDate = DateTime.Now;
             // Store the model in the database
-            context.Books.Add(model);
+            context.Reviews.Add(model);
             context.SaveChanges();
 
             return View(model);
@@ -43,7 +43,7 @@ namespace BookReviews.Controllers
 
         public IActionResult Reviews()
         {
-            var reviews = context.Books.Include(book => book.).ToList<Review>();
+            var reviews = context.Reviews.Include(book => book.Reviewer).ToList<Review>();
             return View(reviews);
         }
     }

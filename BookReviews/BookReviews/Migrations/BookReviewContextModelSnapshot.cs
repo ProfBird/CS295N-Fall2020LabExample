@@ -45,7 +45,7 @@ namespace BookReviews.Migrations
 
                     b.HasIndex("ReviewerUserID");
 
-                    b.ToTable("Books");
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("BookReviews.Models.User", b =>
@@ -60,7 +60,7 @@ namespace BookReviews.Migrations
 
                     b.HasKey("UserID");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("BookReviews.Models.Review", b =>

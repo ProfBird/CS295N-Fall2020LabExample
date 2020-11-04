@@ -8,7 +8,7 @@ namespace BookReviews.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
                     UserID = table.Column<int>(nullable: false)
@@ -17,11 +17,11 @@ namespace BookReviews.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.UserID);
+                    table.PrimaryKey("PK_Users", x => x.UserID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Books",
+                name: "Reviews",
                 columns: table => new
                 {
                     ReviewID = table.Column<int>(nullable: false)
@@ -34,28 +34,28 @@ namespace BookReviews.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Books", x => x.ReviewID);
+                    table.PrimaryKey("PK_Reviews", x => x.ReviewID);
                     table.ForeignKey(
-                        name: "FK_Books_User_ReviewerUserID",
+                        name: "FK_Reviews_Users_ReviewerUserID",
                         column: x => x.ReviewerUserID,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Books_ReviewerUserID",
-                table: "Books",
+                name: "IX_Reviews_ReviewerUserID",
+                table: "Reviews",
                 column: "ReviewerUserID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Books");
+                name: "Reviews");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Users");
         }
     }
 }
