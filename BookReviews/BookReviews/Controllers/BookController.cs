@@ -4,11 +4,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using BookReviews.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookReviews.Controllers
 {
     public class BookController : Controller
     {
+        BookReviewContext context;
+
+        public BookController(BookReviewContext c)
+        {
+            context = c;
+        }
+
+
         public IActionResult Index()
         {
             
@@ -25,7 +34,17 @@ namespace BookReviews.Controllers
         public IActionResult Review(Review model)
         {
             model.ReviewDate = DateTime.Now;
+            // Store the model in the database
+            context.Books.Add(model);
+            context.SaveChanges();
+
             return View(model);
+        }
+
+        public IActionResult Reviews()
+        {
+            var reviews = context.Books.Include(book => book.).ToList<Review>();
+            return View(reviews);
         }
     }
 };
