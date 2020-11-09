@@ -54,5 +54,10 @@ We added this to the web app:
     - Database provider
     - Connection string
 
+### lab06-Mac
+- Added conditional code in Startup to use SQLite if the OS is not Windows
+- Added a connection string for SQLite
+- Removed the Initial migration and added a new one for SQLite
+
 
 

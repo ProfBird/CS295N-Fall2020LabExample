@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using BookReviews.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,8 +22,18 @@ namespace BookReviews
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<BookReviewContext>(options => 
-               options.UseSqlServer(Configuration["Data:BookReviews:ConnectionString"]));
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                // Assuming that SQL Server is installed on Windows
+                services.AddDbContext<BookReviewContext>(options =>
+                   options.UseSqlServer(Configuration["Data:BookReviews:SQLServerConnection"]));
+            }
+            else
+            {
+                // Assuming SQLite is installed on all other operating systems
+                services.AddDbContext<BookReviewContext>(options =>
+                    options.UseSqlite(Configuration["Data:BookReviews:SQLiteConnection"]));
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

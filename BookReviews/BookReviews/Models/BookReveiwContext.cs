@@ -13,7 +13,7 @@ namespace BookReviews.Models
 
      DbContextOptions<BookReviewContext> options) : base(options) { }
 
-        public DbSet<Review> Books { get; set; }
-        public DbSet<User> User { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

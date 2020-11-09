@@ -3,14 +3,16 @@ using System;
 using BookReviews.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookReviews.Migrations
 {
     [DbContext(typeof(BookReviewContext))]
-    partial class BookReviewContextModelSnapshot : ModelSnapshot
+    [Migration("20201106002356_Initial_SQLite")]
+    partial class Initial_SQLite
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
