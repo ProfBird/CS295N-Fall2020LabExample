@@ -26,13 +26,13 @@ namespace BookReviews
             {
                 // Assuming that SQL Server is installed on Windows
                 services.AddDbContext<BookReviewContext>(options =>
-                   options.UseSqlServer(Configuration["Data:BookReviews:SQLServerConnection"]));
+                   options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));
             }
             else
             {
                 // Assuming SQLite is installed on all other operating systems
                 services.AddDbContext<BookReviewContext>(options =>
-                    options.UseSqlite(Configuration["Data:BookReviews:SQLiteConnection"]));
+                    options.UseSqlite(Configuration["ConnectionStrings:SQLiteConnection"]));
             }
         }
 
