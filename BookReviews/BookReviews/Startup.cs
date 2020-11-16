@@ -22,18 +22,20 @@ namespace BookReviews
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+           // if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 // Assuming that SQL Server is installed on Windows
                 services.AddDbContext<BookReviewContext>(options =>
-                   options.UseSqlServer(Configuration["Data:BookReviews:SQLServerConnection"]));
+                   options.UseSqlServer(Configuration["Data:BookReviews:AzureSQLServerConnection"]));
             }
+            /*
             else
             {
                 // Assuming SQLite is installed on all other operating systems
                 services.AddDbContext<BookReviewContext>(options =>
                     options.UseSqlite(Configuration["Data:BookReviews:SQLiteConnection"]));
             }
+            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

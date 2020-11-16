@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookReviews.Migrations
 {
-    public partial class Initial_SQLite : Migration
+    public partial class Initial_AzureSQL : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,7 @@ namespace BookReviews.Migrations
                 columns: table => new
                 {
                     UserID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -25,7 +25,7 @@ namespace BookReviews.Migrations
                 columns: table => new
                 {
                     ReviewID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     BookTitle = table.Column<string>(nullable: true),
                     AuthorName = table.Column<string>(nullable: true),
                     ReviewerUserID = table.Column<int>(nullable: true),
