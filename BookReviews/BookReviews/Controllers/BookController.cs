@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BookReviews.Models;
+using BookReviews.Repos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,10 +12,12 @@ namespace BookReviews.Controllers
     public class BookController : Controller
     {
         BookReviewContext context;
+        ReviewRepository repo;
 
-        public BookController(BookReviewContext c)
+        public BookController(BookReviewContext c, ReviewRepository r)
         {
             context = c;
+            repo = r;
         }
 
 
@@ -43,7 +46,8 @@ namespace BookReviews.Controllers
 
         public IActionResult Reviews()
         {
-            var reviews = context.Reviews.Include(book => book.Reviewer).ToList<Review>();
+            List<Review> reviews = repo.Reviews.ToList<Review>();
+           // var reviews = context.Reviews.Include(book => book.Reviewer).ToList<Review>();
             return View(reviews);
         }
     }

@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using BookReviews.Models;
+using BookReviews.Repos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,10 @@ namespace BookReviews
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            // Inject our repositories into our controllers
+            services.AddTransient<IReviews, ReviewRepository>(); // Repository interface, Repository class
+
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 // Assuming that SQL Server is installed on Windows
