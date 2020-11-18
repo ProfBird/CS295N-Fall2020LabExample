@@ -46,8 +46,9 @@ namespace BookReviews.Controllers
 
         public IActionResult Reviews()
         {
-            List<Review> reviews = repo.Reviews.ToList<Review>();
-           // var reviews = context.Reviews.Include(book => book.Reviewer).ToList<Review>();
+            // Get all reviews in the database
+            List<Review> reviews = repo.Reviews.ToList<Review>(); // Use ToList to convert the IQueryable to a list
+            // var reviews = context.Reviews.Include(book => book.Reviewer).ToList<Review>();
             return View(reviews);
         }
     }

@@ -21,6 +21,8 @@ namespace BookReviews.Repos
         { 
             get 
             { 
+                // Get all the Review objects in the Reviews DbSet
+                // and include the Reivewer object in each Review.
                 return context.Reviews.Include(review => review.Reviewer);
             }
         }

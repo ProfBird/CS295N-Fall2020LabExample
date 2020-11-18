@@ -25,7 +25,7 @@ namespace BookReviews
             services.AddControllersWithViews();
 
             // Inject our repositories into our controllers
-            services.AddTransient<IReviews, ReviewRepository>(); // Repository interface, Repository class
+            services.AddTransient<IReviews, ReviewRepository>(); // Generic types: Repository interface, Repository class
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
