@@ -14,7 +14,7 @@ namespace BookReviews.Controllers
         BookReviewContext context;
         ReviewRepository repo;
 
-        public BookController(BookReviewContext c, ReviewRepository r)
+        public BookController(BookReviewContext c, IReviews r)
         {
             context = c;
             repo = r;
