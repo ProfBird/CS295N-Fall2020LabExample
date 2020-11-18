@@ -11,12 +11,10 @@ namespace BookReviews.Controllers
 {
     public class BookController : Controller
     {
-        BookReviewContext context;
-        IReviews repo;
+        IReviewRepository repo;
 
-        public BookController(BookReviewContext c, IReviews r)
+        public BookController(IReviewRepository r)
         {
-            context = c;
             repo = r;
         }
 
@@ -38,8 +36,7 @@ namespace BookReviews.Controllers
         {
             model.ReviewDate = DateTime.Now;
             // Store the model in the database
-            context.Reviews.Add(model);
-            context.SaveChanges();
+            repo.AddReview(model);
 
             return View(model);
         }
