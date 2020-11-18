@@ -12,7 +12,7 @@ namespace BookReviews.Controllers
     public class BookController : Controller
     {
         BookReviewContext context;
-        ReviewRepository repo;
+        IReviews repo;
 
         public BookController(BookReviewContext c, IReviews r)
         {
