@@ -42,7 +42,7 @@ namespace BookReviews
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, BookReviewContext context)
         {
             if (env.IsDevelopment())
             {
@@ -67,6 +67,10 @@ namespace BookReviews
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            // TODO: Call the seed method
+            SeedData seedData = new SeedData(context);
+            seedData.Seed();
         }
     }
 }
