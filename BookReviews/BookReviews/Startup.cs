@@ -68,9 +68,7 @@ namespace BookReviews
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            // TODO: Call the seed method
-            SeedData seedData = new SeedData(context);
-            seedData.Seed();
+            SeedData.Seed(context);
         }
     }
 }

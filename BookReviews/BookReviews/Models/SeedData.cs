@@ -9,17 +9,9 @@ namespace BookReviews.Models
 {
     public class SeedData
     {
-        BookReviewContext context;
-        public SeedData(BookReviewContext c)
+        public static void Seed(BookReviewContext context)
         {
-            context = c;
-        }
-
-        // public static void Seed(IApplicationBuilder app)
-        public void Seed()
-        {
-            // BookReviewContext context = app.ApplicationServices.GetRequiredService<BookReviewContext>();
-            if (!context.Reviews.Any())  // temporary so I can add reviews to existing data
+          if (!context.Reviews.Any())  // this is to prevent duplicate data from being added
             {
                 Review review = new Review
                 {
@@ -29,19 +21,38 @@ namespace BookReviews.Models
                     Reviewer = new User { Name = "Emma Watson" },
                     ReviewDate = DateTime.Parse("11/1/2020")
                 };
-                context.Reviews.Add(review);
+                context.Reviews.Add(review);  // queues up the review to be added to the DB
+
+                // My next two reviews will be by the same user, so I will create
+                // the user object once and store it so that both reviews will be
+                // associated with the same entity in the DB.
+
+                User reviewer = new User() { Name = "Brian Bird" };
+                context.Users.Add(reviewer);
+                context.SaveChanges();   // This will add a UserID to the reviewer object
 
                 review = new Review
                 {
                     BookTitle = "Virgil Wander",
                     AuthorName = "Lief Enger",
                     ReviewText = "Wonderful book, written by a distant cousin of mine.",
-                    Reviewer = new User { Name = "Brian Bird" },
+                    Reviewer = reviewer,
                     ReviewDate = DateTime.Parse("11/30/2020")
                 };
-
                 context.Reviews.Add(review);
-                context.SaveChanges(); // save all the data
+
+                review = new Review
+                {
+                    BookTitle = "Ivanho",
+                    AuthorName = "Sir Walter Scott",
+                    ReviewText = "It was a little hard going at first, but then I loved it!",
+                    Reviewer = reviewer,
+                    ReviewDate = DateTime.Parse("11/1/2020")
+                };
+                context.Reviews.Add(review);
+
+
+                context.SaveChanges(); // stores all the reviews in the DB
             }
         }
     }
