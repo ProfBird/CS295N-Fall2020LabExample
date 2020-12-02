@@ -33,9 +33,5 @@ namespace BookReviews.Repos
             context.SaveChanges();
         }
 
-        public Review GetReviewByBookTitle(string title)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

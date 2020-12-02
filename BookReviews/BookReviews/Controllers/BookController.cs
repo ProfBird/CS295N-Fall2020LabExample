@@ -25,7 +25,7 @@ namespace BookReviews.Controllers
             return View();
         }
 
-        // Invoke the view with form for entering a review
+        // Show the view that has a form for entering a review
         public IActionResult Review()
         {
             return View();
@@ -46,6 +46,15 @@ namespace BookReviews.Controllers
             // Get all reviews in the database
             List<Review> reviews = repo.Reviews.ToList<Review>(); // Use ToList to convert the IQueryable to a list
             // var reviews = context.Reviews.Include(book => book.Reviewer).ToList<Review>();
+            return View(reviews);
+        }
+
+        [HttpPost]
+        public IActionResult Reviews(string bookTitle)
+        {
+            var reviews =  (from r in repo.Reviews
+                            where r.BookTitle == bookTitle
+                            select r).ToList();
             return View(reviews);
         }
     }

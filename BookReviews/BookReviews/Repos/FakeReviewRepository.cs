@@ -22,9 +22,5 @@ namespace BookReviews.Repos
             reviews.Add(review);
         }
 
-        public Review GetReviewByBookTitle(string title)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

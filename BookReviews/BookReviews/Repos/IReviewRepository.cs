@@ -10,6 +10,5 @@ namespace BookReviews.Repos
     {
         IQueryable<Review> Reviews { get; }  // Read (or retrieve) reviews
         void AddReview(Review review);  // Create a review
-        Review GetReviewByBookTitle(string title);  // Retrieve a particular review
     }
 }
