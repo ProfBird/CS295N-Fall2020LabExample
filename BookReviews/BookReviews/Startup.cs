@@ -25,8 +25,8 @@ namespace BookReviews
             services.AddControllersWithViews();
 
             // Inject our repositories into our controllers
-            services.AddTransient<IReviews, ReviewRepository>(); // Generic types: Repository interface, Repository class
-
+            services.AddTransient<IReviewRepository, ReviewRepository>(); // Generic types: Repository interface, Repository class
+            
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 // Assuming that SQL Server is installed on Windows
@@ -42,7 +42,7 @@ namespace BookReviews
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, BookReviewContext context)
         {
             if (env.IsDevelopment())
             {
@@ -67,6 +67,8 @@ namespace BookReviews
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            SeedData.Seed(context);
         }
     }
 }

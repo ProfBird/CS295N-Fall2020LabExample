@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookReviews.Repos
 {
-    public class ReviewRepository : IReviews
+    public class ReviewRepository : IReviewRepository
     {
         private BookReviewContext context;
 
@@ -27,9 +27,10 @@ namespace BookReviews.Repos
             }
         }
 
-public void AddReview(Review review)
+        public void AddReview(Review review)
         {
-            throw new NotImplementedException();
+            context.Reviews.Add(review);
+            context.SaveChanges();
         }
 
         public Review GetReviewByBookTitle(string title)

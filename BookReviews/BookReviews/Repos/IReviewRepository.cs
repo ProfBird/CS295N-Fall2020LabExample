@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookReviews.Repos
 {
-    public interface IReviews
+    public interface IReviewRepository
     {
         IQueryable<Review> Reviews { get; }  // Read (or retrieve) reviews
         void AddReview(Review review);  // Create a review
