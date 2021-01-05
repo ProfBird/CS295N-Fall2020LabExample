@@ -50,11 +50,23 @@ namespace BookReviews.Controllers
         }
 
         [HttpPost]
-        public IActionResult Reviews(string bookTitle)
+        public IActionResult Reviews(string bookTitle, string reviewerName)
         {
-            var reviews =  (from r in repo.Reviews
-                            where r.BookTitle == bookTitle
-                            select r).ToList();
+            List<Review> reviews = null;
+
+            if (bookTitle != null)
+            {
+               reviews = (from r in repo.Reviews
+                               where r.BookTitle == bookTitle
+                               select r).ToList();
+            }
+            else if (reviewerName != null)
+            {
+                reviews = (from r in repo.Reviews
+                           where r.Reviewer.Name == reviewerName
+                           select r).ToList();
+            }
+
             return View(reviews);
         }
     }
