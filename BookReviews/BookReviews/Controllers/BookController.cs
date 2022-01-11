@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BookReviews.Models;
+using BookReviews.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,11 +11,11 @@ namespace BookReviews.Controllers
 {
     public class BookController : Controller
     {
-        BookReviewContext context;
+        IBookRepository repo;
 
-        public BookController(BookReviewContext c)
+        public BookController(IBookRepository r)
         {
-            context = c;
+            repo = r;
         }
 
 
@@ -35,15 +36,13 @@ namespace BookReviews.Controllers
         {
             model.ReviewDate = DateTime.Now;
             // Store the model in the database
-            context.Reviews.Add(model);
-            context.SaveChanges();
-
+            repo.AddReview(model);  
             return View(model);
         }
 
         public IActionResult Reviews()
         {
-            var reviews = context.Reviews.Include(book => book.Reviewer).ToList<Review>();
+            var reviews = repo.Reviews.ToList<Review>();
             return View(reviews);
         }
     }
