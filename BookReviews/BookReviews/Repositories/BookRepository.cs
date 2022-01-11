@@ -5,13 +5,10 @@ using System.Linq;
 namespace BookReviews.Repositories
 {
     public class BookRepository : IBookRepository
-
     {
-
         private BookReviewContext context;
 
         // Get all reviews + associated data by using the EF Include method.
-
         public IQueryable<Review> Reviews
         {
             get
