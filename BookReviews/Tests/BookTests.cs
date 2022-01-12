@@ -65,5 +65,7 @@ namespace Tests
             Assert.Equal(titles[2], review3.BookTitle);
         }
     }
+    // Note: The Reviews method is not being tested because it doesn't do any
+    // processing, it just calls a method on the repository.
 }
 
