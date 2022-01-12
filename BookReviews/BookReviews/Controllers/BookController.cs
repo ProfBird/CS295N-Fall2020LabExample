@@ -18,14 +18,29 @@ namespace BookReviews.Controllers
             repo = r;
         }
 
-
+        /// <summary>
+        /// List all books (without duplicates)
+        /// </summary>
         public IActionResult Index()
         {
-            
-            return View();
+            /* Add a filter to the IQueryable that groups all reviews which have
+                the same book title and then selects just the first one from each group.
+                Note: .GroupBy is not supported by EF Core 3.1 so this doesn't work:
+                var reviews = repo.Reviews.
+                    GroupBy(review => review.BookTitle).
+                    Select(group => group.FirstOrDefault()).
+                    ToList();
+            */
+
+            var titles = repo.Reviews
+                .Select(review => review.BookTitle)
+                .Distinct()
+                .ToList();
+
+            return View(titles);
         }
 
-        // Invoke the view with form for entering a review
+        // Invoke the view with a form for entering a review
         public IActionResult Review()
         {
             return View();
