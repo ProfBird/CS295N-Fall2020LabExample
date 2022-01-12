@@ -11,6 +11,7 @@ namespace Tests
     // Tests for the BookController
     public class BookTests
     {
+        // Example of testing an HTTP.POST method
         [Fact]
         public void AddReviewTest()
         {
@@ -33,6 +34,7 @@ namespace Tests
                 repoReview.ReviewDate.Date));
         }
 
+        // Example of testing an HTTP.GET method
         [Fact]
         public void IndexTest()
         {
