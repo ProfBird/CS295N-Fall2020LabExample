@@ -21,8 +21,13 @@ namespace BookReviews.Controllers
 
         public IActionResult Index()
         {
-            
-            return View();
+            List<string> bookTitles = null;
+            bookTitles = repo.Reviews
+                .Select(review => review.BookTitle)
+                .Distinct()
+                .ToList();
+
+            return View(bookTitles);
         }
 
         // Invoke the view with form for entering a review
@@ -34,9 +39,12 @@ namespace BookReviews.Controllers
         [HttpPost]
         public IActionResult Review(Review model)
         {
-            model.ReviewDate = DateTime.Now;
-            // Store the model in the database
-            repo.AddReview(model);  
+            if (ModelState.IsValid)
+            {
+                model.ReviewDate = DateTime.Now;
+                // Store the model in the database
+                repo.AddReview(model);
+            }
             return View(model);
         }
 
