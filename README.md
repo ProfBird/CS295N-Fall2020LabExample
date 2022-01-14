@@ -61,3 +61,19 @@ We added this to the web app:
 
 
 
+### Lab09
+
+Seed data is added using calls to the DbContext. This is the "old" way of adding seed data.
+
+
+
+### 9-SeedData
+
+Seed data is added using ModelBuilder.Entity . This is the "new" way of adding seed data.
+
+These tutorials were used:
+
+https://docs.microsoft.com/en-us/ef/core/modeling/data-seeding
+
+https://www.learnentityframeworkcore.com/migrations/seeding
+
