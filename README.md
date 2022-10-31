@@ -2,10 +2,6 @@
 
 This Book Review web site provides examples of how to implement the types of features that students will need to implement in their weekly lab assignments. 
 
-## Contents
-
-[TOC]
-
 ## Branches
 
 The branches of the repository are named according to the labs. Each branch of the repository contains code that reflects what students will do in that lab assignment.
